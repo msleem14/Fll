@@ -3,68 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التوظيف - FLL Express Logistics</title>
+    <title>التوظيف | FLL Express Logistics</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --red: #dc2626; --red-dark: #991b1b; --dark: #0a0a0a; }
-        body { font-family: 'Cairo', 'Poppins', sans-serif; background: var(--dark); color: #fff; line-height: 1.6; min-height: 100vh; }
-        body.en { direction: ltr; font-family: 'Poppins', 'Cairo', sans-serif; }
-        a { text-decoration: none; color: inherit; }
-        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-        
-        .navbar { padding: 20px 0; background: rgba(0,0,0,0.9); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 24px; font-weight: 900; }
-        .logo span { color: var(--red); }
-        .nav-actions { display: flex; gap: 15px; align-items: center; }
-        .btn { padding: 10px 20px; border-radius: 10px; font-weight: 700; transition: all 0.3s; cursor: pointer; border: none; font-size: 14px; }
-        .btn-primary { background: linear-gradient(135deg, var(--red), var(--red-dark)); color: #fff; }
-        .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.2); color: #fff; }
-        .lang-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 8px; color: #fff; cursor: pointer; font-weight: 600; font-size: 14px; }
-        
-        .hero { padding: 60px 0; text-align: center; background: linear-gradient(180deg, rgba(220,38,38,0.05), transparent); }
-        .hero h1 { font-size: 36px; margin-bottom: 10px; }
-        .hero h1 span { color: var(--red); }
-        .hero p { color: rgba(255,255,255,0.6); font-size: 18px; }
-        
-        .jobs { padding: 40px 0; }
-        .jobs-grid { display: grid; gap: 20px; margin-bottom: 40px; }
-        .job-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 24px; }
-        .job-card h3 { font-size: 20px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .job-card h3::before { content: ''; width: 10px; height: 10px; background: #22c55e; border-radius: 50%; }
-        .job-card p { color: rgba(255,255,255,0.6); margin-bottom: 15px; }
-        .job-reqs { display: flex; flex-wrap: wrap; gap: 10px; }
-        .job-req { background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 20px; font-size: 13px; color: rgba(255,255,255,0.7); }
-        
-        .form-section { padding: 40px 0 80px; }
-        .form-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 32px; }
-        .form-card h2 { font-size: 24px; margin-bottom: 30px; text-align: center; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 14px; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; font-size: 16px; font-family: inherit; transition: all 0.3s; }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--red); }
-        .form-group textarea { resize: none; height: 100px; }
-        .form-group select { cursor: pointer; }
-        .form-group select option { background: #111; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .file-upload { border: 2px dashed rgba(255,255,255,0.2); border-radius: 12px; padding: 30px; text-align: center; cursor: pointer; transition: all 0.3s; }
-        .file-upload:hover { border-color: var(--red); background: rgba(220,38,38,0.05); }
-        .file-upload input { display: none; }
-        .file-upload svg { width: 40px; height: 40px; stroke: rgba(255,255,255,0.4); margin-bottom: 10px; }
-        .file-upload p { color: rgba(255,255,255,0.5); font-size: 14px; }
-        .file-upload .file-name { color: var(--red); font-weight: 600; margin-top: 10px; }
-        
-        .success-msg { background: rgba(34,197,94,0.2); border: 1px solid rgba(34,197,94,0.3); padding: 20px; border-radius: 12px; text-align: center; display: none; }
-        .success-msg.show { display: block; }
-        .success-msg h3 { color: #22c55e; margin-bottom: 10px; }
-        
-        .footer { padding: 30px 0; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
-        .footer p { color: rgba(255,255,255,0.4); font-size: 14px; }
-        
-        @media (max-width: 768px) {
-            .form-row { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 28px; }
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--red:#dc2626;--red-dark:#991b1b;--red-light:#ef4444;--dark:#0a0a0a;--darker:#050505}
+        body{font-family:'Cairo','Poppins',sans-serif;background:var(--dark);color:#fff;line-height:1.7;overflow-x:hidden;min-height:100vh}
+        body.en{direction:ltr;font-family:'Poppins','Cairo',sans-serif}
+        a{text-decoration:none;color:inherit}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+        @keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+        .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 0;background:rgba(0,0,0,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(220,38,38,.2)}
+        .navbar .container{display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:28px;font-weight:900;display:flex;align-items:center;gap:3px}
+        .logo span{color:var(--red)}
+        .nav-actions{display:flex;gap:15px;align-items:center}
+        .btn{padding:14px 32px;border-radius:14px;font-weight:700;transition:all .3s;cursor:pointer;border:none;font-size:15px;display:inline-flex;align-items:center;gap:10px}
+        .btn-primary{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;box-shadow:0 8px 30px rgba(220,38,38,.3)}
+        .btn-primary:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(220,38,38,.5)}
+        .btn-outline{background:transparent;border:2px solid rgba(255,255,255,.2);color:#fff}
+        .btn-outline:hover{border-color:var(--red);background:rgba(220,38,38,.1)}
+        .lang-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:10px 20px;border-radius:10px;color:#fff;cursor:pointer;font-weight:700}
+
+        .hero{padding:160px 0 100px;text-align:center;position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(ellipse,rgba(220,38,38,.15) 0%,transparent 70%);pointer-events:none}
+        .hero h1{font-size:clamp(40px,6vw,64px);font-weight:900;margin-bottom:25px}
+        .hero h1 .red{background:linear-gradient(135deg,#ff6b6b,var(--red));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero p{font-size:20px;color:rgba(255,255,255,.7);max-width:700px;margin:0 auto 50px;line-height:1.9}
+
+        .jobs-section{padding:0 0 100px}
+        .jobs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px;margin-bottom:80px}
+        .job-card{background:linear-gradient(145deg,rgba(255,255,255,.03),rgba(0,0,0,.4));border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:40px;transition:all .5s;position:relative;overflow:hidden}
+        .job-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--red-light));transform:scaleX(0);transition:transform .5s;transform-origin:right}
+        body.en .job-card::before{transform-origin:left}
+        .job-card:hover{border-color:rgba(220,38,38,.5);transform:translateY(-10px);box-shadow:0 30px 60px rgba(0,0,0,.4)}
+        .job-card:hover::before{transform:scaleX(1);transform-origin:left}
+        body.en .job-card:hover::before{transform-origin:right}
+        .job-icon{width:70px;height:70px;background:linear-gradient(135deg,rgba(220,38,38,.2),rgba(220,38,38,.05));border-radius:20px;display:flex;align-items:center;justify-content:center;margin-bottom:25px}
+        .job-icon i{font-size:32px;color:var(--red)}
+        .job-card h3{font-size:24px;margin-bottom:15px}
+        .job-card>p{color:rgba(255,255,255,.6);font-size:16px;line-height:1.9;margin-bottom:20px}
+        .job-details{display:flex;flex-wrap:wrap;gap:12px}
+        .job-details span{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:8px 18px;border-radius:12px;font-size:14px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px}
+        .job-details span i{color:var(--red)}
+
+        .form-section{background:linear-gradient(145deg,rgba(255,255,255,.02),rgba(0,0,0,.3));border:1px solid rgba(255,255,255,.08);border-radius:30px;padding:60px;max-width:900px;margin:0 auto}
+        .form-section h2{text-align:center;font-size:36px;margin-bottom:15px}
+        .form-section h2 .red{color:var(--red)}
+        .form-section>p{text-align:center;color:rgba(255,255,255,.6);margin-bottom:50px;font-size:18px}
+        .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+        .form-group{margin-bottom:25px}
+        .form-group.full{grid-column:span 2}
+        .form-group label{display:block;margin-bottom:12px;color:rgba(255,255,255,.8);font-size:15px;font-weight:600}
+        .form-group label .required{color:var(--red);margin-right:5px}
+        body.en .form-group label .required{margin-left:5px;margin-right:0}
+        .form-group input,.form-group select,.form-group textarea{width:100%;padding:18px 24px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:16px;color:#fff;font-size:16px;font-family:inherit;transition:all .3s}
+        .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 30px rgba(220,38,38,.15)}
+        .form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc2626' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 20px center;background-size:24px}
+        body.en .form-group select{background-position:right 20px center}
+        .form-group select option{background:#1a1a1a;color:#fff}
+        .form-group textarea{height:150px;resize:none}
+
+        .file-upload{border:2px dashed rgba(255,255,255,.1);border-radius:16px;padding:40px;text-align:center;cursor:pointer;transition:all .3s;position:relative}
+        .file-upload:hover{border-color:var(--red);background:rgba(220,38,38,.05)}
+        .file-upload.dragging{border-color:var(--red);background:rgba(220,38,38,.1)}
+        .file-upload input{position:absolute;inset:0;opacity:0;cursor:pointer}
+        .file-upload i{font-size:48px;color:var(--red);margin-bottom:15px;display:block}
+        .file-upload p{color:rgba(255,255,255,.7);font-size:16px;margin-bottom:8px}
+        .file-upload span{color:rgba(255,255,255,.4);font-size:14px}
+        .file-name{color:var(--red-light);font-weight:600;margin-top:15px}
+
+        .benefits{padding:100px 0;background:linear-gradient(180deg,var(--dark),#0d0d0d)}
+        .benefits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+        .benefit-card{text-align:center;padding:40px 30px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:24px;transition:all .4s}
+        .benefit-card:hover{border-color:rgba(220,38,38,.4);transform:translateY(-10px)}
+        .benefit-card i{font-size:42px;color:var(--red);margin-bottom:20px;display:block}
+        .benefit-card h4{font-size:20px;margin-bottom:12px}
+        .benefit-card p{color:rgba(255,255,255,.5);font-size:15px}
+
+        .footer{background:#000;border-top:1px solid rgba(255,255,255,.05);padding:40px 0;text-align:center}
+        .footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent)}
+        .footer p{color:rgba(255,255,255,.4)}
+        .footer a{color:var(--red);margin:0 10px}
+
+        @media(max-width:768px){
+            .form-grid{grid-template-columns:1fr}
+            .form-group.full{grid-column:span 1}
+            .benefits-grid{grid-template-columns:1fr 1fr}
+            .form-section{padding:40px 25px}
+        }
+        @media(max-width:480px){
+            .benefits-grid{grid-template-columns:1fr}
+            .jobs-grid{grid-template-columns:1fr}
         }
     </style>
 </head>
@@ -74,139 +108,189 @@
             <a href="index.html" class="logo">FLL<span>Express</span></a>
             <div class="nav-actions">
                 <button class="lang-btn" onclick="toggleLang()" id="langBtn">EN</button>
-                <a href="index.html" class="btn btn-outline" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+                <a href="index.html" class="btn btn-outline"><i class="fas fa-arrow-right"></i><span data-ar="الصفحة الرئيسية" data-en="Home">الصفحة الرئيسية</span></a>
             </div>
         </div>
     </nav>
 
     <section class="hero">
         <div class="container">
-            <h1 data-ar="انضم لفريق <span>إف إل إل</span>" data-en="Join <span>FLL</span> Team">انضم لفريق <span>إف إل إل</span></h1>
-            <p data-ar="نبحث عن مواهب متميزة للانضمام إلى فريقنا" data-en="We are looking for talented individuals">نبحث عن مواهب متميزة للانضمام إلى فريقنا</p>
+            <h1><span data-ar="انضم لفريق" data-en="Join">انضم لفريق</span> <span class="red" data-ar="إف إل إل إكسبريس" data-en="FLL Express">إف إل إل إكسبريس</span></h1>
+            <p data-ar="نحن نبحث دائماً عن أشخاص متميزين ومحترفين للانضمام إلى عائلتنا المتنامية. اكتشف الفرص المتاحة وابدأ مسيرتك المهنية معنا اليوم!" data-en="We're always looking for exceptional professionals to join our growing family. Discover available opportunities and start your career with us today!">نحن نبحث دائماً عن أشخاص متميزين ومحترفين للانضمام إلى عائلتنا المتنامية. اكتشف الفرص المتاحة وابدأ مسيرتك المهنية معنا اليوم!</p>
         </div>
     </section>
 
-    <section class="jobs">
+    <section class="jobs-section">
         <div class="container">
             <div class="jobs-grid">
                 <div class="job-card">
+                    <div class="job-icon"><i class="fas fa-motorcycle"></i></div>
                     <h3 data-ar="مندوب توصيل" data-en="Delivery Agent">مندوب توصيل</h3>
-                    <p data-ar="نبحث عن مندوبين توصيل للانضمام لفريقنا" data-en="We are looking for delivery agents to join our team">نبحث عن مندوبين توصيل للانضمام لفريقنا</p>
-                    <div class="job-reqs">
-                        <span class="job-req" data-ar="رخصة قيادة سارية" data-en="Valid license">رخصة قيادة سارية</span>
-                        <span class="job-req" data-ar="امتلاك سيارة أو دراجة" data-en="Own vehicle">امتلاك سيارة أو دراجة</span>
-                        <span class="job-req" data-ar="معرفة بالطرق" data-en="Know roads">معرفة بالطرق</span>
+                    <p data-ar="انضم لفريقنا كمندوب توصيل محترف. نوفر لك بيئة عمل ممتازة، دخل مجزي، ومرونة في ساعات العمل. لا يشترط وجود خبرة سابقة - نحن نوفر التدريب الكامل!" data-en="Join our team as a professional delivery agent. We provide excellent work environment, competitive income, and flexible hours. No prior experience required - we provide full training!">انضم لفريقنا كمندوب توصيل محترف. نوفر لك بيئة عمل ممتازة، دخل مجزي، ومرونة في ساعات العمل. لا يشترط وجود خبرة سابقة - نحن نوفر التدريب الكامل!</p>
+                    <div class="job-details">
+                        <span><i class="fas fa-map-marker-alt"></i><span data-ar="الرياض" data-en="Riyadh">الرياض</span></span>
+                        <span><i class="fas fa-clock"></i><span data-ar="دوام كامل / جزئي" data-en="Full/Part Time">دوام كامل / جزئي</span></span>
+                        <span><i class="fas fa-money-bill"></i><span data-ar="راتب تنافسي" data-en="Competitive Salary">راتب تنافسي</span></span>
                     </div>
                 </div>
                 <div class="job-card">
+                    <div class="job-icon"><i class="fas fa-user-tie"></i></div>
                     <h3 data-ar="مشرف تشغيل" data-en="Operations Supervisor">مشرف تشغيل</h3>
-                    <p data-ar="نبحث عن مشرفين تشغيل لإدارة فرق التوصيل" data-en="We are looking for supervisors to manage teams">نبحث عن مشرفين تشغيل لإدارة فرق التوصيل</p>
-                    <div class="job-reqs">
-                        <span class="job-req" data-ar="خبرة سابقة" data-en="Experience">خبرة سابقة</span>
-                        <span class="job-req" data-ar="مهارات قيادية" data-en="Leadership">مهارات قيادية</span>
-                        <span class="job-req" data-ar="تواصل ممتاز" data-en="Communication">تواصل ممتاز</span>
+                    <p data-ar="نبحث عن مشرف تشغيل ذو خبرة لإدارة فريق المندوبين والإشراف على العمليات اليومية. يتطلب مهارات قيادية قوية وخبرة في مجال التوصيل أو اللوجستيات." data-en="We're looking for an experienced Operations Supervisor to manage the delivery team and oversee daily operations. Requires strong leadership skills and logistics experience.">نبحث عن مشرف تشغيل ذو خبرة لإدارة فريق المندوبين والإشراف على العمليات اليومية. يتطلب مهارات قيادية قوية وخبرة في مجال التوصيل أو اللوجستيات.</p>
+                    <div class="job-details">
+                        <span><i class="fas fa-map-marker-alt"></i><span data-ar="الرياض" data-en="Riyadh">الرياض</span></span>
+                        <span><i class="fas fa-clock"></i><span data-ar="دوام كامل" data-en="Full Time">دوام كامل</span></span>
+                        <span><i class="fas fa-briefcase"></i><span data-ar="خبرة مطلوبة" data-en="Experience Required">خبرة مطلوبة</span></span>
                     </div>
                 </div>
+            </div>
+
+            <div class="form-section" id="apply">
+                <h2><span data-ar="قدم طلبك" data-en="Submit Your">قدم طلبك</span> <span class="red" data-ar="الآن" data-en="Application">الآن</span></h2>
+                <p data-ar="املأ النموذج التالي وسنتواصل معك في أقرب وقت" data-en="Fill out the form below and we'll contact you soon">املأ النموذج التالي وسنتواصل معك في أقرب وقت</p>
+                <form id="applicationForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label><span class="required">*</span><span data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</span></label>
+                            <input type="text" id="fullName" required placeholder="" data-placeholder-ar="أدخل اسمك الكامل" data-placeholder-en="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="required">*</span><span data-ar="رقم الجوال" data-en="Phone Number">رقم الجوال</span></label>
+                            <input type="tel" id="phone" required dir="ltr" placeholder="05xxxxxxxx">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="required">*</span><span data-ar="المدينة" data-en="City">المدينة</span></label>
+                            <select id="city" required>
+                                <option value="" data-ar="اختر المدينة" data-en="Select City">اختر المدينة</option>
+                                <option value="riyadh" data-ar="الرياض" data-en="Riyadh">الرياض</option>
+                                <option value="jeddah" data-ar="جدة" data-en="Jeddah">جدة</option>
+                                <option value="dammam" data-ar="الدمام" data-en="Dammam">الدمام</option>
+                                <option value="mecca" data-ar="مكة المكرمة" data-en="Mecca">مكة المكرمة</option>
+                                <option value="medina" data-ar="المدينة المنورة" data-en="Medina">المدينة المنورة</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><span class="required">*</span><span data-ar="الوظيفة المطلوبة" data-en="Position">الوظيفة المطلوبة</span></label>
+                            <select id="position" required>
+                                <option value="" data-ar="اختر الوظيفة" data-en="Select Position">اختر الوظيفة</option>
+                                <option value="delivery" data-ar="مندوب توصيل" data-en="Delivery Agent">مندوب توصيل</option>
+                                <option value="supervisor" data-ar="مشرف تشغيل" data-en="Operations Supervisor">مشرف تشغيل</option>
+                            </select>
+                        </div>
+                        <div class="form-group full">
+                            <label><span data-ar="الخبرة السابقة (اختياري)" data-en="Previous Experience (Optional)">الخبرة السابقة (اختياري)</span></label>
+                            <textarea id="experience" data-placeholder-ar="اكتب عن خبراتك السابقة في مجال التوصيل أو أي مجال ذو صلة..." data-placeholder-en="Describe your previous experience in delivery or related fields..."></textarea>
+                        </div>
+                        <div class="form-group full">
+                            <label><span data-ar="رفع ملف (سيرة ذاتية أو صورة الهوية)" data-en="Upload File (CV or ID Copy)">رفع ملف (سيرة ذاتية أو صورة الهوية)</span></label>
+                            <div class="file-upload" id="fileUpload">
+                                <input type="file" id="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p data-ar="اضغط هنا أو اسحب الملف" data-en="Click or drag file here">اضغط هنا أو اسحب الملف</p>
+                                <span data-ar="PDF, DOC, JPG - الحد الأقصى 5MB" data-en="PDF, DOC, JPG - Max 5MB">PDF, DOC, JPG - الحد الأقصى 5MB</span>
+                                <div class="file-name" id="fileName"></div>
+                            </div>
+                        </div>
+                        <div class="form-group full">
+                            <label><span data-ar="ملاحظات إضافية (اختياري)" data-en="Additional Notes (Optional)">ملاحظات إضافية (اختياري)</span></label>
+                            <textarea id="notes" data-placeholder-ar="أي معلومات إضافية تود مشاركتها معنا..." data-placeholder-en="Any additional information you'd like to share..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:20px;font-size:18px;margin-top:20px">
+                        <i class="fas fa-paper-plane"></i>
+                        <span data-ar="إرسال الطلب" data-en="Submit Application">إرسال الطلب</span>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
-    <section class="form-section">
+    <section class="benefits">
         <div class="container">
-            <div class="form-card">
-                <h2 data-ar="نموذج التقديم" data-en="Application Form">نموذج التقديم</h2>
-                
-                <div class="success-msg" id="successMsg">
-                    <h3 data-ar="تم إرسال طلبك بنجاح!" data-en="Application Submitted!">تم إرسال طلبك بنجاح!</h3>
-                    <p data-ar="سنتواصل معك في أقرب وقت" data-en="We will contact you soon">سنتواصل معك في أقرب وقت</p>
+            <div class="section-header" style="text-align:center;margin-bottom:60px">
+                <h2 style="font-size:clamp(32px,4vw,48px);margin-bottom:20px"><span style="background:linear-gradient(135deg,#ff6b6b,var(--red));-webkit-background-clip:text;-webkit-text-fill-color:transparent" data-ar="لماذا تعمل معنا؟" data-en="Why Work With Us?">لماذا تعمل معنا؟</span></h2>
+                <p style="color:rgba(255,255,255,.6);font-size:18px;max-width:600px;margin:0 auto" data-ar="نوفر لموظفينا بيئة عمل متميزة ومزايا تنافسية" data-en="We provide our employees with an excellent work environment and competitive benefits">نوفر لموظفينا بيئة عمل متميزة ومزايا تنافسية</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h4 data-ar="رواتب تنافسية" data-en="Competitive Salaries">رواتب تنافسية</h4>
+                    <p data-ar="نقدم رواتب ومكافآت تنافسية تتناسب مع أدائك وخبرتك" data-en="We offer competitive salaries and bonuses based on performance">نقدم رواتب ومكافآت تنافسية تتناسب مع أدائك وخبرتك</p>
                 </div>
-                
-                <form id="careerForm">
-                    <div class="form-group">
-                        <label data-ar="الاسم الكامل *" data-en="Full Name *">الاسم الكامل *</label>
-                        <input type="text" required id="fullName">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label data-ar="رقم الجوال *" data-en="Phone *">رقم الجوال *</label>
-                            <input type="tel" required dir="ltr" id="phone">
-                        </div>
-                        <div class="form-group">
-                            <label data-ar="المدينة *" data-en="City *">المدينة *</label>
-                            <select required id="city">
-                                <option value="" data-ar="اختر المدينة" data-en="Select City">اختر المدينة</option>
-                                <option value="الرياض" data-ar="الرياض" data-en="Riyadh">الرياض</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label data-ar="الوظيفة المطلوبة *" data-en="Position *">الوظيفة المطلوبة *</label>
-                        <select required id="position">
-                            <option value="" data-ar="اختر الوظيفة" data-en="Select Position">اختر الوظيفة</option>
-                            <option value="مندوب توصيل" data-ar="مندوب توصيل" data-en="Delivery Agent">مندوب توصيل</option>
-                            <option value="مشرف تشغيل" data-ar="مشرف تشغيل" data-en="Operations Supervisor">مشرف تشغيل</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label data-ar="الخبرة السابقة (اختياري)" data-en="Experience (Optional)">الخبرة السابقة (اختياري)</label>
-                        <textarea id="experience"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label data-ar="رفع ملف (سيرة ذاتية أو هوية)" data-en="Upload File (CV or ID)">رفع ملف (سيرة ذاتية أو هوية)</label>
-                        <div class="file-upload" onclick="document.getElementById('fileInput').click()">
-                            <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                            <p data-ar="اسحب الملف أو اضغط للاختيار" data-en="Drag or click to select">اسحب الملف أو اضغط للاختيار</p>
-                            <div class="file-name" id="fileName"></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label data-ar="ملاحظات" data-en="Notes">ملاحظات</label>
-                        <textarea id="notes"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width:100%;padding:16px;" data-ar="إرسال الطلب" data-en="Submit Application">إرسال الطلب</button>
-                </form>
+                <div class="benefit-card">
+                    <i class="fas fa-clock"></i>
+                    <h4 data-ar="مرونة في العمل" data-en="Flexible Hours">مرونة في العمل</h4>
+                    <p data-ar="ساعات عمل مرنة تناسب جدولك الشخصي" data-en="Flexible working hours that fit your personal schedule">ساعات عمل مرنة تناسب جدولك الشخصي</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4 data-ar="تدريب مستمر" data-en="Continuous Training">تدريب مستمر</h4>
+                    <p data-ar="برامج تدريبية متطورة لتطوير مهاراتك المهنية" data-en="Advanced training programs to develop your skills">برامج تدريبية متطورة لتطوير مهاراتك المهنية</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h4 data-ar="فرص للترقي" data-en="Growth Opportunities">فرص للترقي</h4>
+                    <p data-ar="مسار وظيفي واضح مع فرص حقيقية للنمو والتطور" data-en="Clear career path with real opportunities for growth">مسار وظيفي واضح مع فرص حقيقية للنمو والتطور</p>
+                </div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="container">
-            <p>© 2025 FLL Express Logistics. <span data-ar="جميع الحقوق محفوظة" data-en="All Rights Reserved">جميع الحقوق محفوظة</span></p>
+            <p>© 2025 FLL Express. <span data-ar="جميع الحقوق محفوظة" data-en="All Rights Reserved">جميع الحقوق محفوظة</span> | <a href="index.html" data-ar="الصفحة الرئيسية" data-en="Home">الصفحة الرئيسية</a></p>
         </div>
     </footer>
 
     <script>
-        let currentLang = 'ar';
-        
-        function toggleLang() {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            document.body.classList.toggle('en', currentLang === 'en');
-            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-            document.documentElement.lang = currentLang;
-            document.getElementById('langBtn').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
-            
-            document.querySelectorAll('[data-ar][data-en]').forEach(el => {
-                if (el.tagName === 'OPTION') {
-                    el.textContent = el.getAttribute('data-' + currentLang);
-                } else {
-                    el.innerHTML = el.getAttribute('data-' + currentLang);
-                }
-            });
+        let lang='ar';
+        function toggleLang(){
+            lang=lang==='ar'?'en':'ar';
+            document.body.classList.toggle('en',lang==='en');
+            document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+            document.documentElement.lang=lang;
+            document.getElementById('langBtn').textContent=lang==='ar'?'EN':'عربي';
+            document.querySelectorAll('[data-ar][data-en]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)});
+            document.querySelectorAll('[data-placeholder-ar][data-placeholder-en]').forEach(el=>{el.placeholder=el.getAttribute('data-placeholder-'+lang)});
+            document.querySelectorAll('select option[data-ar][data-en]').forEach(opt=>{opt.text=opt.getAttribute('data-'+lang)});
         }
-        
-        document.getElementById('fileInput').addEventListener('change', function() {
-            const fileName = this.files[0] ? this.files[0].name : '';
-            document.getElementById('fileName').textContent = fileName;
-        });
-        
-        document.getElementById('careerForm').addEventListener('submit', function(e) {
+
+        // File upload handling
+        const fileUpload=document.getElementById('fileUpload');
+        const fileInput=document.getElementById('file');
+        const fileName=document.getElementById('fileName');
+
+        fileUpload.addEventListener('dragover',e=>{e.preventDefault();fileUpload.classList.add('dragging')});
+        fileUpload.addEventListener('dragleave',()=>fileUpload.classList.remove('dragging'));
+        fileUpload.addEventListener('drop',e=>{e.preventDefault();fileUpload.classList.remove('dragging');if(e.dataTransfer.files.length){fileInput.files=e.dataTransfer.files;updateFileName()}});
+        fileInput.addEventListener('change',updateFileName);
+
+        function updateFileName(){
+            if(fileInput.files.length){
+                fileName.textContent=fileInput.files[0].name;
+            }
+        }
+
+        // Form submission
+        document.getElementById('applicationForm').addEventListener('submit',e=>{
             e.preventDefault();
-            document.getElementById('successMsg').classList.add('show');
-            this.style.display = 'none';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const formData={
+                name:document.getElementById('fullName').value,
+                phone:document.getElementById('phone').value,
+                city:document.getElementById('city').value,
+                position:document.getElementById('position').value,
+                experience:document.getElementById('experience').value,
+                notes:document.getElementById('notes').value,
+                file:fileInput.files.length?fileInput.files[0].name:null
+            };
+            console.log('Application submitted:',formData);
+            alert(lang==='ar'?'تم إرسال طلبك بنجاح! سنتواصل معك قريباً.':'Your application has been submitted successfully! We will contact you soon.');
+            e.target.reset();
+            fileName.textContent='';
         });
+
+        // Initialize placeholders
+        document.querySelectorAll('[data-placeholder-ar]').forEach(el=>{el.placeholder=el.getAttribute('data-placeholder-ar')});
     </script>
 </body>
 </html>
-
