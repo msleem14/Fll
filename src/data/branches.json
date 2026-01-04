@@ -1,0 +1,25 @@
+{
+  "branches": [
+    {
+      "id": "riyadh",
+      "active": true,
+      "ar": {
+        "name": "فرع الرياض",
+        "address": "حي العليا، الرياض، المملكة العربية السعودية",
+        "city": "الرياض"
+      },
+      "en": {
+        "name": "Riyadh Branch",
+        "address": "Al Olaya District, Riyadh, Saudi Arabia",
+        "city": "Riyadh"
+      },
+      "phone": "+966 11 000 0000",
+      "email": "riyadh@fll-logistics.com",
+      "coordinates": {
+        "lat": 24.7136,
+        "lng": 46.6753
+      }
+    }
+  ]
+}
+

@@ -1,0 +1,165 @@
+{
+  "settings": {
+    "email": "info@fll-express.com",
+    "phone": "+966 50 000 0000",
+    "whatsapp": "+966500000000"
+  },
+  "hero": {
+    "ar": {
+      "title": "إف إل إل إكسبريس",
+      "subtitle": "شريكك الأمثل في إدارة أساطيل التوصيل",
+      "description": "نقدم حلول لوجستية متكاملة للمطاعم والمتاجر، مع إدارة احترافية لأساطيل التوصيل وشراكات استراتيجية مع أكبر منصات التوصيل في المملكة"
+    },
+    "en": {
+      "title": "FLL Express Logistics",
+      "subtitle": "Your Optimal Partner in Delivery Fleet Management",
+      "description": "We provide integrated logistics solutions for restaurants and stores, with professional fleet management and strategic partnerships with the largest delivery platforms in the Kingdom"
+    }
+  },
+  "about": {
+    "ar": {
+      "title": "من نحن",
+      "description": "إف إل إل إكسبريس شركة سعودية رائدة في مجال الخدمات اللوجستية، متخصصة في إدارة وتشغيل أساطيل التوصيل للمطاعم والمتاجر. نعمل مع أكبر منصات التوصيل في المملكة لضمان تجربة توصيل استثنائية.",
+      "vision": "أن نكون الخيار الأول لإدارة أساطيل التوصيل في المملكة العربية السعودية",
+      "mission": "تقديم خدمات لوجستية احترافية تضمن رضا عملائنا وشركائنا"
+    },
+    "en": {
+      "title": "About Us",
+      "description": "FLL Express Logistics is a leading Saudi company in logistics services, specializing in managing and operating delivery fleets for restaurants and stores. We work with the largest delivery platforms in the Kingdom to ensure an exceptional delivery experience.",
+      "vision": "To be the first choice for delivery fleet management in Saudi Arabia",
+      "mission": "Providing professional logistics services that ensure the satisfaction of our clients and partners"
+    }
+  },
+  "services": {
+    "ar": {
+      "title": "خدماتنا",
+      "subtitle": "حلول لوجستية شاملة لقطاع المطاعم",
+      "items": [
+        {
+          "title": "إدارة الأساطيل",
+          "description": "إدارة كاملة لأسطول التوصيل الخاص بك مع متابعة مستمرة وتقارير دورية",
+          "icon": "fleet"
+        },
+        {
+          "title": "تشغيل يومي متكامل",
+          "description": "نضمن تشغيل سلس ومستمر لعمليات التوصيل على مدار الساعة",
+          "icon": "operations"
+        },
+        {
+          "title": "تدريب المندوبين",
+          "description": "برامج تدريبية احترافية لضمان جودة الخدمة والتعامل مع العملاء",
+          "icon": "training"
+        },
+        {
+          "title": "تكامل مع المنصات",
+          "description": "ربط مباشر مع جميع منصات التوصيل الرئيسية لضمان سرعة الاستجابة",
+          "icon": "integration"
+        }
+      ]
+    },
+    "en": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive Logistics Solutions for the Restaurant Sector",
+      "items": [
+        {
+          "title": "Fleet Management",
+          "description": "Complete management of your delivery fleet with continuous monitoring and periodic reports",
+          "icon": "fleet"
+        },
+        {
+          "title": "Integrated Daily Operations",
+          "description": "We ensure smooth and continuous delivery operations around the clock",
+          "icon": "operations"
+        },
+        {
+          "title": "Agent Training",
+          "description": "Professional training programs to ensure service quality and customer handling",
+          "icon": "training"
+        },
+        {
+          "title": "Platform Integration",
+          "description": "Direct connection with all major delivery platforms to ensure quick response",
+          "icon": "integration"
+        }
+      ]
+    }
+  },
+  "whyUs": {
+    "ar": {
+      "title": "لماذا إف إل إل؟",
+      "items": [
+        {
+          "title": "خبرة واسعة",
+          "description": "سنوات من الخبرة في قطاع اللوجستيات والتوصيل"
+        },
+        {
+          "title": "شراكات قوية",
+          "description": "شراكات استراتيجية مع أكبر منصات التوصيل"
+        },
+        {
+          "title": "تقنية متقدمة",
+          "description": "أنظمة تتبع وإدارة حديثة"
+        },
+        {
+          "title": "دعم متواصل",
+          "description": "فريق دعم على مدار الساعة"
+        }
+      ]
+    },
+    "en": {
+      "title": "Why FLL?",
+      "items": [
+        {
+          "title": "Extensive Experience",
+          "description": "Years of experience in the logistics and delivery sector"
+        },
+        {
+          "title": "Strong Partnerships",
+          "description": "Strategic partnerships with the largest delivery platforms"
+        },
+        {
+          "title": "Advanced Technology",
+          "description": "Modern tracking and management systems"
+        },
+        {
+          "title": "Continuous Support",
+          "description": "Support team available 24/7"
+        }
+      ]
+    }
+  },
+  "cta": {
+    "ar": {
+      "title": "ابدأ رحلتك معنا",
+      "description": "انضم إلى شركائنا واستفد من حلولنا اللوجستية المتكاملة",
+      "requestService": "طلب خدمة",
+      "applyJob": "طلب توظيف"
+    },
+    "en": {
+      "title": "Start Your Journey With Us",
+      "description": "Join our partners and benefit from our integrated logistics solutions",
+      "requestService": "Request Service",
+      "applyJob": "Apply for a Job"
+    }
+  },
+  "contact": {
+    "ar": {
+      "title": "تواصل معنا",
+      "subtitle": "نحن هنا لمساعدتك"
+    },
+    "en": {
+      "title": "Contact Us",
+      "subtitle": "We're here to help you"
+    }
+  },
+  "footer": {
+    "ar": {
+      "rights": "جميع الحقوق محفوظة",
+      "company": "إف إل إل إكسبريس"
+    },
+    "en": {
+      "rights": "All Rights Reserved",
+      "company": "FLL Express Logistics"
+    }
+  }
+}

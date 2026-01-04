@@ -1,0 +1,54 @@
+{
+  "partners": [
+    {
+      "id": "keeta",
+      "name": "Keeta",
+      "nameAr": "كيتا",
+      "logo": "/partners/keeta.svg",
+      "active": true
+    },
+    {
+      "id": "hungerstation",
+      "name": "HungerStation",
+      "nameAr": "هنقرستيشن",
+      "logo": "/partners/hungerstation.svg",
+      "active": true
+    },
+    {
+      "id": "jahez",
+      "name": "Jahez",
+      "nameAr": "جاهز",
+      "logo": "/partners/jahez.svg",
+      "active": true
+    },
+    {
+      "id": "thechefs",
+      "name": "The Chefs",
+      "nameAr": "ذا شيفز",
+      "logo": "/partners/thechefs.svg",
+      "active": true
+    },
+    {
+      "id": "mrsool",
+      "name": "Mrsool",
+      "nameAr": "مرسول",
+      "logo": "/partners/mrsool.svg",
+      "active": true
+    },
+    {
+      "id": "imile",
+      "name": "iMile",
+      "nameAr": "إيميل",
+      "logo": "/partners/imile.svg",
+      "active": true
+    },
+    {
+      "id": "ninja",
+      "name": "Ninja",
+      "nameAr": "نينجا",
+      "logo": "/partners/ninja.svg",
+      "active": true
+    }
+  ]
+}
+

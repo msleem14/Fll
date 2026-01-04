@@ -1,0 +1,53 @@
+{
+  "jobs": [
+    {
+      "id": "delivery-agent",
+      "active": true,
+      "ar": {
+        "title": "مندوب توصيل",
+        "description": "نبحث عن مندوبين توصيل للانضمام لفريقنا",
+        "requirements": [
+          "رخصة قيادة سارية",
+          "امتلاك سيارة أو دراجة نارية",
+          "معرفة جيدة بالطرق والمناطق",
+          "التزام بالمواعيد"
+        ]
+      },
+      "en": {
+        "title": "Delivery Agent",
+        "description": "We are looking for delivery agents to join our team",
+        "requirements": [
+          "Valid driving license",
+          "Own a car or motorcycle",
+          "Good knowledge of roads and areas",
+          "Punctuality"
+        ]
+      }
+    },
+    {
+      "id": "operations-supervisor",
+      "active": true,
+      "ar": {
+        "title": "مشرف تشغيل",
+        "description": "نبحث عن مشرفين تشغيل لإدارة فرق التوصيل",
+        "requirements": [
+          "خبرة سابقة في الإشراف",
+          "مهارات قيادية",
+          "القدرة على العمل تحت الضغط",
+          "مهارات تواصل ممتازة"
+        ]
+      },
+      "en": {
+        "title": "Operations Supervisor",
+        "description": "We are looking for operations supervisors to manage delivery teams",
+        "requirements": [
+          "Previous supervisory experience",
+          "Leadership skills",
+          "Ability to work under pressure",
+          "Excellent communication skills"
+        ]
+      }
+    }
+  ]
+}
+
