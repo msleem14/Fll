@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التوظيف - FLL Express Logistics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --red: #dc2626; --red-dark: #991b1b; --dark: #0a0a0a; }
+        body { font-family: 'Cairo', 'Poppins', sans-serif; background: var(--dark); color: #fff; line-height: 1.6; min-height: 100vh; }
+        body.en { direction: ltr; font-family: 'Poppins', 'Cairo', sans-serif; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        
+        .navbar { padding: 20px 0; background: rgba(0,0,0,0.9); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: 900; }
+        .logo span { color: var(--red); }
+        .nav-actions { display: flex; gap: 15px; align-items: center; }
+        .btn { padding: 10px 20px; border-radius: 10px; font-weight: 700; transition: all 0.3s; cursor: pointer; border: none; font-size: 14px; }
+        .btn-primary { background: linear-gradient(135deg, var(--red), var(--red-dark)); color: #fff; }
+        .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.2); color: #fff; }
+        .lang-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 8px; color: #fff; cursor: pointer; font-weight: 600; font-size: 14px; }
+        
+        .hero { padding: 60px 0; text-align: center; background: linear-gradient(180deg, rgba(220,38,38,0.05), transparent); }
+        .hero h1 { font-size: 36px; margin-bottom: 10px; }
+        .hero h1 span { color: var(--red); }
+        .hero p { color: rgba(255,255,255,0.6); font-size: 18px; }
+        
+        .jobs { padding: 40px 0; }
+        .jobs-grid { display: grid; gap: 20px; margin-bottom: 40px; }
+        .job-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 24px; }
+        .job-card h3 { font-size: 20px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .job-card h3::before { content: ''; width: 10px; height: 10px; background: #22c55e; border-radius: 50%; }
+        .job-card p { color: rgba(255,255,255,0.6); margin-bottom: 15px; }
+        .job-reqs { display: flex; flex-wrap: wrap; gap: 10px; }
+        .job-req { background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 20px; font-size: 13px; color: rgba(255,255,255,0.7); }
+        
+        .form-section { padding: 40px 0 80px; }
+        .form-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 32px; }
+        .form-card h2 { font-size: 24px; margin-bottom: 30px; text-align: center; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 14px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; font-size: 16px; font-family: inherit; transition: all 0.3s; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--red); }
+        .form-group textarea { resize: none; height: 100px; }
+        .form-group select { cursor: pointer; }
+        .form-group select option { background: #111; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .file-upload { border: 2px dashed rgba(255,255,255,0.2); border-radius: 12px; padding: 30px; text-align: center; cursor: pointer; transition: all 0.3s; }
+        .file-upload:hover { border-color: var(--red); background: rgba(220,38,38,0.05); }
+        .file-upload input { display: none; }
+        .file-upload svg { width: 40px; height: 40px; stroke: rgba(255,255,255,0.4); margin-bottom: 10px; }
+        .file-upload p { color: rgba(255,255,255,0.5); font-size: 14px; }
+        .file-upload .file-name { color: var(--red); font-weight: 600; margin-top: 10px; }
+        
+        .success-msg { background: rgba(34,197,94,0.2); border: 1px solid rgba(34,197,94,0.3); padding: 20px; border-radius: 12px; text-align: center; display: none; }
+        .success-msg.show { display: block; }
+        .success-msg h3 { color: #22c55e; margin-bottom: 10px; }
+        
+        .footer { padding: 30px 0; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .footer p { color: rgba(255,255,255,0.4); font-size: 14px; }
+        
+        @media (max-width: 768px) {
+            .form-row { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">FLL<span>Express</span></a>
+            <div class="nav-actions">
+                <button class="lang-btn" onclick="toggleLang()" id="langBtn">EN</button>
+                <a href="index.html" class="btn btn-outline" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1 data-ar="انضم لفريق <span>إف إل إل</span>" data-en="Join <span>FLL</span> Team">انضم لفريق <span>إف إل إل</span></h1>
+            <p data-ar="نبحث عن مواهب متميزة للانضمام إلى فريقنا" data-en="We are looking for talented individuals">نبحث عن مواهب متميزة للانضمام إلى فريقنا</p>
+        </div>
+    </section>
+
+    <section class="jobs">
+        <div class="container">
+            <div class="jobs-grid">
+                <div class="job-card">
+                    <h3 data-ar="مندوب توصيل" data-en="Delivery Agent">مندوب توصيل</h3>
+                    <p data-ar="نبحث عن مندوبين توصيل للانضمام لفريقنا" data-en="We are looking for delivery agents to join our team">نبحث عن مندوبين توصيل للانضمام لفريقنا</p>
+                    <div class="job-reqs">
+                        <span class="job-req" data-ar="رخصة قيادة سارية" data-en="Valid license">رخصة قيادة سارية</span>
+                        <span class="job-req" data-ar="امتلاك سيارة أو دراجة" data-en="Own vehicle">امتلاك سيارة أو دراجة</span>
+                        <span class="job-req" data-ar="معرفة بالطرق" data-en="Know roads">معرفة بالطرق</span>
+                    </div>
+                </div>
+                <div class="job-card">
+                    <h3 data-ar="مشرف تشغيل" data-en="Operations Supervisor">مشرف تشغيل</h3>
+                    <p data-ar="نبحث عن مشرفين تشغيل لإدارة فرق التوصيل" data-en="We are looking for supervisors to manage teams">نبحث عن مشرفين تشغيل لإدارة فرق التوصيل</p>
+                    <div class="job-reqs">
+                        <span class="job-req" data-ar="خبرة سابقة" data-en="Experience">خبرة سابقة</span>
+                        <span class="job-req" data-ar="مهارات قيادية" data-en="Leadership">مهارات قيادية</span>
+                        <span class="job-req" data-ar="تواصل ممتاز" data-en="Communication">تواصل ممتاز</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="container">
+            <div class="form-card">
+                <h2 data-ar="نموذج التقديم" data-en="Application Form">نموذج التقديم</h2>
+                
+                <div class="success-msg" id="successMsg">
+                    <h3 data-ar="تم إرسال طلبك بنجاح!" data-en="Application Submitted!">تم إرسال طلبك بنجاح!</h3>
+                    <p data-ar="سنتواصل معك في أقرب وقت" data-en="We will contact you soon">سنتواصل معك في أقرب وقت</p>
+                </div>
+                
+                <form id="careerForm">
+                    <div class="form-group">
+                        <label data-ar="الاسم الكامل *" data-en="Full Name *">الاسم الكامل *</label>
+                        <input type="text" required id="fullName">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-ar="رقم الجوال *" data-en="Phone *">رقم الجوال *</label>
+                            <input type="tel" required dir="ltr" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label data-ar="المدينة *" data-en="City *">المدينة *</label>
+                            <select required id="city">
+                                <option value="" data-ar="اختر المدينة" data-en="Select City">اختر المدينة</option>
+                                <option value="الرياض" data-ar="الرياض" data-en="Riyadh">الرياض</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label data-ar="الوظيفة المطلوبة *" data-en="Position *">الوظيفة المطلوبة *</label>
+                        <select required id="position">
+                            <option value="" data-ar="اختر الوظيفة" data-en="Select Position">اختر الوظيفة</option>
+                            <option value="مندوب توصيل" data-ar="مندوب توصيل" data-en="Delivery Agent">مندوب توصيل</option>
+                            <option value="مشرف تشغيل" data-ar="مشرف تشغيل" data-en="Operations Supervisor">مشرف تشغيل</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label data-ar="الخبرة السابقة (اختياري)" data-en="Experience (Optional)">الخبرة السابقة (اختياري)</label>
+                        <textarea id="experience"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label data-ar="رفع ملف (سيرة ذاتية أو هوية)" data-en="Upload File (CV or ID)">رفع ملف (سيرة ذاتية أو هوية)</label>
+                        <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                            <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <p data-ar="اسحب الملف أو اضغط للاختيار" data-en="Drag or click to select">اسحب الملف أو اضغط للاختيار</p>
+                            <div class="file-name" id="fileName"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label data-ar="ملاحظات" data-en="Notes">ملاحظات</label>
+                        <textarea id="notes"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;padding:16px;" data-ar="إرسال الطلب" data-en="Submit Application">إرسال الطلب</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 FLL Express Logistics. <span data-ar="جميع الحقوق محفوظة" data-en="All Rights Reserved">جميع الحقوق محفوظة</span></p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'ar';
+        
+        function toggleLang() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.body.classList.toggle('en', currentLang === 'en');
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+            document.getElementById('langBtn').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+            
+            document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+                if (el.tagName === 'OPTION') {
+                    el.textContent = el.getAttribute('data-' + currentLang);
+                } else {
+                    el.innerHTML = el.getAttribute('data-' + currentLang);
+                }
+            });
+        }
+        
+        document.getElementById('fileInput').addEventListener('change', function() {
+            const fileName = this.files[0] ? this.files[0].name : '';
+            document.getElementById('fileName').textContent = fileName;
+        });
+        
+        document.getElementById('careerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('successMsg').classList.add('show');
+            this.style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
+
