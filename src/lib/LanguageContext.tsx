@@ -81,26 +81,40 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('ar');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const savedLang = localStorage.getItem('language') as Language;
-    if (savedLang) {
-      setLanguage(savedLang);
+    setMounted(true);
+    if (typeof window !== 'undefined') {
+      const savedLang = localStorage.getItem('language') as Language;
+      if (savedLang && (savedLang === 'ar' || savedLang === 'en')) {
+        setLanguage(savedLang);
+      }
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('language', language);
-    document.documentElement.lang = language;
-    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
-    document.body.dir = language === 'ar' ? 'rtl' : 'ltr';
-  }, [language]);
+    if (mounted && typeof window !== 'undefined') {
+      localStorage.setItem('language', language);
+      document.documentElement.lang = language;
+      document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+      document.body.dir = language === 'ar' ? 'rtl' : 'ltr';
+    }
+  }, [language, mounted]);
 
   const t = (key: string): string => {
     return translations[key]?.[language] || key;
   };
 
   const dir = language === 'ar' ? 'rtl' : 'ltr';
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t, dir }}>
@@ -116,4 +130,3 @@ export function useLanguage() {
   }
   return context;
 }
-
