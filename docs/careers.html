@@ -242,7 +242,7 @@
             <div class="form-section" id="apply">
                 <h2><span data-ar="قدم طلبك" data-en="Submit Your">قدم طلبك</span> <span class="red" data-ar="الآن" data-en="Application">الآن</span></h2>
                 <p data-ar="املأ النموذج التالي وسنتواصل معك في أقرب وقت" data-en="Fill out the form below and we'll contact you soon">املأ النموذج التالي وسنتواصل معك في أقرب وقت</p>
-                <form id="applicationForm" action="https://formsubmit.co/mtarek2661345@gmail.com" method="POST" enctype="multipart/form-data">
+                <form id="applicationForm" enctype="multipart/form-data">
                     <input type="hidden" name="_subject" value="طلب توظيف جديد - FLL Express">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
@@ -425,16 +425,49 @@
         }
 
         // Form submission
-        document.getElementById('applicationForm').addEventListener('submit',e=>{
+        document.getElementById('applicationForm').addEventListener('submit',async e=>{
+            e.preventDefault();
             const btn=e.target.querySelector('button');
             const originalHTML=btn.innerHTML;
             btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> <span data-ar="جاري الإرسال..." data-en="Sending...">جاري الإرسال...</span>';
             btn.disabled=true;
-            // Form will submit normally to FormSubmit
-            setTimeout(()=>{
-                btn.innerHTML=originalHTML;
-                btn.disabled=false;
-            },3000);
+            
+            const formData=new FormData(e.target);
+            
+            try{
+                const response=await fetch('https://formsubmit.co/ajax/mtarek2661345@gmail.com',{
+                    method:'POST',
+                    body:formData,
+                    headers:{
+                        'Accept':'application/json'
+                    }
+                });
+                
+                if(response.ok){
+                    btn.innerHTML='<i class="fas fa-check"></i> <span data-ar="تم الإرسال!" data-en="Sent!">تم الإرسال!</span>';
+                    btn.style.background='linear-gradient(135deg,#22c55e,#16a34a)';
+                    alert(lang==='ar'?'تم إرسال طلبك بنجاح! سنتواصل معك قريباً.':'Your application has been submitted successfully! We will contact you soon.');
+                    e.target.reset();
+                    fileName.textContent='';
+                    setTimeout(()=>{
+                        btn.innerHTML=originalHTML;
+                        btn.style.background='';
+                        btn.disabled=false;
+                    },2000);
+                }else{
+                    throw new Error('Failed to send');
+                }
+            }catch(error){
+                console.error('Error:',error);
+                btn.innerHTML='<i class="fas fa-exclamation-triangle"></i> <span data-ar="خطأ في الإرسال" data-en="Error">خطأ في الإرسال</span>';
+                btn.style.background='linear-gradient(135deg,#ef4444,#dc2626)';
+                alert(lang==='ar'?'حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.':'An error occurred. Please try again.');
+                setTimeout(()=>{
+                    btn.innerHTML=originalHTML;
+                    btn.style.background='';
+                    btn.disabled=false;
+                },2000);
+            }
         });
 
         // Initialize placeholders
