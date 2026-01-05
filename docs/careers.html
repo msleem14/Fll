@@ -242,19 +242,22 @@
             <div class="form-section" id="apply">
                 <h2><span data-ar="قدم طلبك" data-en="Submit Your">قدم طلبك</span> <span class="red" data-ar="الآن" data-en="Application">الآن</span></h2>
                 <p data-ar="املأ النموذج التالي وسنتواصل معك في أقرب وقت" data-en="Fill out the form below and we'll contact you soon">املأ النموذج التالي وسنتواصل معك في أقرب وقت</p>
-                <form id="applicationForm">
+                <form id="applicationForm" action="https://formsubmit.co/mtarek2661345@gmail.com" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_subject" value="طلب توظيف جديد - FLL Express">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
                     <div class="form-grid">
                         <div class="form-group">
                             <label><span class="required">*</span><span data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</span></label>
-                            <input type="text" id="fullName" required placeholder="" data-placeholder-ar="أدخل اسمك الكامل" data-placeholder-en="Enter your full name">
+                            <input type="text" id="fullName" name="fullName" required placeholder="" data-placeholder-ar="أدخل اسمك الكامل" data-placeholder-en="Enter your full name">
                         </div>
                         <div class="form-group">
                             <label><span class="required">*</span><span data-ar="رقم الجوال" data-en="Phone Number">رقم الجوال</span></label>
-                            <input type="tel" id="phone" required dir="ltr" placeholder="05xxxxxxxx">
+                            <input type="tel" id="phone" name="phone" required dir="ltr" placeholder="05xxxxxxxx">
                         </div>
                         <div class="form-group">
                             <label><span class="required">*</span><span data-ar="المدينة" data-en="City">المدينة</span></label>
-                            <select id="city" required>
+                            <select id="city" name="city" required>
                                 <option value="" data-ar="اختر المدينة" data-en="Select City">اختر المدينة</option>
                                 <option value="riyadh" data-ar="الرياض" data-en="Riyadh">الرياض</option>
                                 <option value="jeddah" data-ar="جدة" data-en="Jeddah">جدة</option>
@@ -265,7 +268,7 @@
                         </div>
                         <div class="form-group">
                             <label><span class="required">*</span><span data-ar="الوظيفة المطلوبة" data-en="Position">الوظيفة المطلوبة</span></label>
-                            <select id="position" required>
+                            <select id="position" name="position" required>
                                 <option value="" data-ar="اختر الوظيفة" data-en="Select Position">اختر الوظيفة</option>
                                 <option value="delivery" data-ar="مندوب توصيل" data-en="Delivery Agent">مندوب توصيل</option>
                                 <option value="supervisor" data-ar="مشرف تشغيل" data-en="Operations Supervisor">مشرف تشغيل</option>
@@ -273,12 +276,12 @@
                         </div>
                         <div class="form-group full">
                             <label><span data-ar="الخبرة السابقة (اختياري)" data-en="Previous Experience (Optional)">الخبرة السابقة (اختياري)</span></label>
-                            <textarea id="experience" data-placeholder-ar="اكتب عن خبراتك السابقة في مجال التوصيل أو أي مجال ذو صلة..." data-placeholder-en="Describe your previous experience in delivery or related fields..."></textarea>
+                            <textarea id="experience" name="experience" data-placeholder-ar="اكتب عن خبراتك السابقة في مجال التوصيل أو أي مجال ذو صلة..." data-placeholder-en="Describe your previous experience in delivery or related fields..."></textarea>
                         </div>
                         <div class="form-group full">
                             <label><span data-ar="رفع ملف (سيرة ذاتية أو صورة الهوية)" data-en="Upload File (CV or ID Copy)">رفع ملف (سيرة ذاتية أو صورة الهوية)</span></label>
                             <div class="file-upload" id="fileUpload">
-                                <input type="file" id="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                <input type="file" id="file" name="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                                 <i class="fas fa-cloud-upload-alt"></i>
                                 <p data-ar="اضغط هنا أو اسحب الملف" data-en="Click or drag file here">اضغط هنا أو اسحب الملف</p>
                                 <span data-ar="PDF, DOC, JPG - الحد الأقصى 5MB" data-en="PDF, DOC, JPG - Max 5MB">PDF, DOC, JPG - الحد الأقصى 5MB</span>
@@ -287,7 +290,7 @@
                         </div>
                         <div class="form-group full">
                             <label><span data-ar="ملاحظات إضافية (اختياري)" data-en="Additional Notes (Optional)">ملاحظات إضافية (اختياري)</span></label>
-                            <textarea id="notes" data-placeholder-ar="أي معلومات إضافية تود مشاركتها معنا..." data-placeholder-en="Any additional information you'd like to share..."></textarea>
+                            <textarea id="notes" name="notes" data-placeholder-ar="أي معلومات إضافية تود مشاركتها معنا..." data-placeholder-en="Any additional information you'd like to share..."></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:20px;font-size:18px;margin-top:20px">
@@ -423,20 +426,15 @@
 
         // Form submission
         document.getElementById('applicationForm').addEventListener('submit',e=>{
-            e.preventDefault();
-            const formData={
-                name:document.getElementById('fullName').value,
-                phone:document.getElementById('phone').value,
-                city:document.getElementById('city').value,
-                position:document.getElementById('position').value,
-                experience:document.getElementById('experience').value,
-                notes:document.getElementById('notes').value,
-                file:fileInput.files.length?fileInput.files[0].name:null
-            };
-            console.log('Application submitted:',formData);
-            alert(lang==='ar'?'تم إرسال طلبك بنجاح! سنتواصل معك قريباً.':'Your application has been submitted successfully! We will contact you soon.');
-            e.target.reset();
-            fileName.textContent='';
+            const btn=e.target.querySelector('button');
+            const originalHTML=btn.innerHTML;
+            btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> <span data-ar="جاري الإرسال..." data-en="Sending...">جاري الإرسال...</span>';
+            btn.disabled=true;
+            // Form will submit normally to FormSubmit
+            setTimeout(()=>{
+                btn.innerHTML=originalHTML;
+                btn.disabled=false;
+            },3000);
         });
 
         // Initialize placeholders

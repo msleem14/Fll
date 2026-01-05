@@ -816,13 +816,16 @@
                     </div>
                 </div>
                 <div class="contact-form reveal-right">
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://formsubmit.co/mtarek2661345@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="طلب تواصل جديد - FLL Express">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
                         <div class="form-row">
-                            <div class="form-group"><label data-ar="الاسم" data-en="Name">الاسم</label><input type="text" required placeholder=""></div>
-                            <div class="form-group"><label data-ar="الجوال" data-en="Phone">الجوال</label><input type="tel" dir="ltr" required placeholder="05xxxxxxxx"></div>
+                            <div class="form-group"><label data-ar="الاسم" data-en="Name">الاسم</label><input type="text" name="name" required placeholder=""></div>
+                            <div class="form-group"><label data-ar="الجوال" data-en="Phone">الجوال</label><input type="tel" name="phone" dir="ltr" required placeholder="05xxxxxxxx"></div>
                         </div>
-                        <div class="form-group"><label data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</label><input type="email" dir="ltr" placeholder="example@email.com"></div>
-                        <div class="form-group"><label data-ar="رسالتك" data-en="Message">رسالتك</label><textarea required placeholder=""></textarea></div>
+                        <div class="form-group"><label data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</label><input type="email" name="email" dir="ltr" placeholder="example@email.com"></div>
+                        <div class="form-group"><label data-ar="رسالتك" data-en="Message">رسالتك</label><textarea name="message" required placeholder=""></textarea></div>
                         <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:20px;font-size:17px"><i class="fas fa-paper-plane"></i><span data-ar="إرسال الرسالة" data-en="Send Message">إرسال الرسالة</span></button>
                     </form>
                 </div>
@@ -1031,21 +1034,17 @@
         },{threshold:0.5});
         counters.forEach(c=>counterObserver.observe(c));
         
-        // Form submit
+        // Form submit - Contact Form
         document.getElementById('contactForm').addEventListener('submit',e=>{
-            e.preventDefault();
             const btn=e.target.querySelector('button');
-            btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+            const originalHTML=btn.innerHTML;
+            btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> <span data-ar="جاري الإرسال..." data-en="Sending...">جاري الإرسال...</span>';
+            btn.disabled=true;
+            // Form will submit normally to FormSubmit
             setTimeout(()=>{
-                btn.innerHTML='<i class="fas fa-check"></i> تم الإرسال!';
-                btn.style.background='linear-gradient(135deg,#22c55e,#16a34a)';
-                setTimeout(()=>{
-                    alert(lang==='ar'?'تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.':'Message sent successfully! We will contact you soon.');
-                    e.target.reset();
-                    btn.innerHTML='<i class="fas fa-paper-plane"></i><span>إرسال الرسالة</span>';
-                    btn.style.background='';
-                },1000);
-            },1500);
+                btn.innerHTML=originalHTML;
+                btn.disabled=false;
+            },3000);
         });
 
         // Ripple Effect on Buttons
