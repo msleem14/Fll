@@ -24,6 +24,8 @@
         .logo-icon i{color:#fff;font-size:24px}
         .logo-text{font-size:22px;font-weight:800;color:#fff}
         .navbar.scrolled .logo-text{color:#111}
+        .logo-svg path:not([fill^="url"]){transition:fill .3s}
+        .navbar.scrolled .logo-svg path:not([fill^="url"]){fill:#111}
         .nav-links{display:flex;gap:35px}
         .nav-links a{color:rgba(255,255,255,.9);font-weight:600;font-size:15px;transition:all .3s;position:relative}
         .navbar.scrolled .nav-links a{color:#333}
@@ -222,8 +224,13 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#" class="logo">
-                <div class="logo-icon"><i class="fas fa-truck-fast"></i></div>
-                <span class="logo-text">FLL Express</span>
+                <svg class="logo-svg" viewBox="0 0 180 80" style="height:45px;width:auto">
+                    <defs><linearGradient id="arrowGrad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#dc2626"/><stop offset="100%" style="stop-color:#b91c1c"/></linearGradient></defs>
+                    <path d="M10 8 L10 72 L28 72 L28 48 L55 48 L55 32 L28 32 L28 24 L60 24 L60 8 Z" fill="#fff"/>
+                    <path d="M65 8 L65 72 L110 72 L110 56 L83 56 L83 8 Z" fill="#fff"/>
+                    <path d="M115 8 L115 72 L160 72 L160 56 L133 56 L133 8 Z" fill="#fff"/>
+                    <path d="M5 58 Q15 70, 40 68 Q70 65, 100 55 Q130 45, 155 30 L150 38 L168 22 L148 18 L153 27 Q125 42, 95 52 Q65 62, 35 63 Q15 64, 8 52 Z" fill="url(#arrowGrad1)"/>
+                </svg>
             </a>
             <div class="nav-links">
                 <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
@@ -434,8 +441,13 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo">
-                        <div class="logo-icon"><i class="fas fa-truck-fast"></i></div>
-                        <span class="logo-text" style="color:#fff">FLL Express</span>
+                        <svg class="logo-svg" viewBox="0 0 180 80" style="height:50px;width:auto">
+                            <defs><linearGradient id="arrowGrad2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#dc2626"/><stop offset="100%" style="stop-color:#b91c1c"/></linearGradient></defs>
+                            <path d="M10 8 L10 72 L28 72 L28 48 L55 48 L55 32 L28 32 L28 24 L60 24 L60 8 Z" fill="#fff"/>
+                            <path d="M65 8 L65 72 L110 72 L110 56 L83 56 L83 8 Z" fill="#fff"/>
+                            <path d="M115 8 L115 72 L160 72 L160 56 L133 56 L133 8 Z" fill="#fff"/>
+                            <path d="M5 58 Q15 70, 40 68 Q70 65, 100 55 Q130 45, 155 30 L150 38 L168 22 L148 18 L153 27 Q125 42, 95 52 Q65 62, 35 63 Q15 64, 8 52 Z" fill="url(#arrowGrad2)"/>
+                        </svg>
                     </div>
                     <p data-ar="شركة سعودية رائدة متخصصة في إدارة وتشغيل أساطيل التوصيل للمطاعم والمتاجر. نعمل مع أكبر منصات التوصيل لنضمن لك أفضل خدمة." data-en="A leading Saudi company specializing in fleet management for restaurants and stores.">شركة سعودية رائدة متخصصة في إدارة وتشغيل أساطيل التوصيل للمطاعم والمتاجر. نعمل مع أكبر منصات التوصيل لنضمن لك أفضل خدمة.</p>
                 </div>
