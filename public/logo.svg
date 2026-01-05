@@ -1,22 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
   <defs>
     <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#dc2626"/>
-      <stop offset="100%" style="stop-color:#991b1b"/>
+      <stop offset="100%" style="stop-color:#b91c1c"/>
     </linearGradient>
   </defs>
   
   <!-- F -->
-  <path d="M30 30 L30 170 L60 170 L60 110 L100 110 L100 80 L60 80 L60 60 L110 60 L110 30 Z" fill="#ffffff"/>
+  <path d="M50 20 L50 160 L85 160 L85 105 L140 105 L140 75 L85 75 L85 50 L150 50 L150 20 Z" fill="currentColor"/>
   
-  <!-- L -->
-  <path d="M120 30 L120 170 L200 170 L200 140 L150 140 L150 30 Z" fill="#ffffff"/>
+  <!-- First L -->
+  <path d="M160 20 L160 160 L250 160 L250 130 L195 130 L195 20 Z" fill="currentColor"/>
   
-  <!-- L -->
-  <path d="M210 30 L210 170 L290 170 L290 140 L240 140 L240 30 Z" fill="#ffffff"/>
+  <!-- Second L -->
+  <path d="M260 20 L260 160 L350 160 L350 130 L295 130 L295 20 Z" fill="currentColor"/>
   
-  <!-- Arrow -->
-  <path d="M80 130 Q120 80, 200 60 Q250 50, 300 40 L310 55 L330 25 L295 30 L305 45 Q250 55, 200 70 Q130 90, 95 135 Z" fill="url(#arrowGrad)"/>
+  <!-- Curved Arrow (Red, curving from bottom-left upward to top-right) -->
+  <path d="M30 140
+           Q50 170, 100 165
+           Q180 155, 260 130
+           Q320 110, 370 75
+           L362 90 L395 60 L358 52 L368 68
+           Q315 100, 250 120
+           Q175 145, 95 155
+           Q50 160, 38 130
+           Z" 
+        fill="url(#arrowGrad)"/>
   
+  <!-- Express text -->
+  <text x="100" y="200" font-family="Arial Black, Arial, sans-serif" font-size="42" font-weight="900" font-style="italic" fill="currentColor">Express</text>
+  
+  <!-- Logistics text -->
+  <text x="165" y="240" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="currentColor">Logistics</text>
+  
+  <!-- Arabic text -->
+  <text x="120" y="280" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="currentColor" direction="rtl">إف إل إل إكسبريس</text>
 </svg>
-

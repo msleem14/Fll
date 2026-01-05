@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   Menu, X, Globe, ArrowLeft, ArrowRight, Truck, Users, Clock, Shield,
   Eye, Target, Settings, GraduationCap, Link2, ArrowUpRight, CheckCircle2,
@@ -219,9 +220,15 @@ export default function Home() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 backdrop-blur-xl border-b border-white/5 py-3' : 'py-5 bg-transparent'}`}>
         <div className="container mx-auto px-4 md:px-8">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-1">
-              <span className="text-2xl md:text-3xl font-black text-white">FLL</span>
-              <span className="text-2xl md:text-3xl font-black text-red-500">Express</span>
+            <Link href="/" className="flex items-center">
+              <Image 
+                src="/logo-simple.svg" 
+                alt="FLL Express Logistics" 
+                width={120} 
+                height={50}
+                className="invert"
+                priority
+              />
             </Link>
             <div className="hidden lg:flex items-center gap-8">
               {[
@@ -481,7 +488,15 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div className="lg:col-span-2">
-              <div className="mb-6"><span className="text-3xl font-black text-white">FLL</span><span className="text-3xl font-black text-red-500">Express</span></div>
+              <div className="mb-6">
+                <Image 
+                  src="/logo-simple.svg" 
+                  alt="FLL Express Logistics" 
+                  width={150} 
+                  height={65}
+                  className="invert"
+                />
+              </div>
               <p className="text-white/50 mb-6 max-w-md leading-relaxed">{t.about.description}</p>
             </div>
             <div>

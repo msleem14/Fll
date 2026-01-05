@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { 
   Settings, MapPin, Briefcase, FileText, Save, Plus, Trash2, 
   Eye, EyeOff, Loader2, CheckCircle, AlertCircle, Home, LogOut,
@@ -232,11 +233,16 @@ export default function Dashboard() {
 
         {/* Logo */}
         <div className="p-6 border-b border-white/5">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-black">FLL</span>
-            <span className="text-2xl font-black text-primary-500">Express</span>
+          <div className="flex items-center">
+            <Image 
+              src="/logo-simple.svg" 
+              alt="FLL Express Logistics" 
+              width={120} 
+              height={50}
+              className="invert"
+            />
           </div>
-          <p className="text-white/50 text-sm mt-1">لوحة التحكم</p>
+          <p className="text-white/50 text-sm mt-2">لوحة التحكم</p>
         </div>
 
         {/* Navigation */}
