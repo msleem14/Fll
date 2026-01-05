@@ -2,7 +2,10 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>التوظيف | FLL Express Logistics</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -110,15 +113,60 @@
         .footer a{color:var(--red);margin:0 10px}
 
         @media(max-width:768px){
-            .form-grid{grid-template-columns:1fr}
-            .form-group.full{grid-column:span 1}
-            .benefits-grid{grid-template-columns:1fr 1fr}
-            .form-section{padding:40px 25px}
+            .container{padding:0 16px}
+            .navbar{padding:15px 0}
+            .logo{font-size:22px}
+            .hero{padding:120px 0 60px}
+            .hero h1{font-size:clamp(32px,8vw,42px);margin-bottom:20px}
+            .hero p{font-size:16px;margin-bottom:40px}
+            .jobs-section{padding:0 0 60px}
+            .jobs-grid{grid-template-columns:1fr;gap:25px;margin-bottom:50px}
+            .job-card{padding:30px 20px}
+            .job-icon{width:60px;height:60px;margin-bottom:20px}
+            .job-icon i{font-size:28px}
+            .job-card h3{font-size:20px;margin-bottom:12px}
+            .job-card>p{font-size:14px;margin-bottom:18px}
+            .job-details{gap:10px}
+            .job-details span{padding:6px 14px;font-size:12px}
+            .form-section{padding:40px 25px;border-radius:24px}
+            .form-section h2{font-size:28px;margin-bottom:12px}
+            .form-section>p{font-size:16px;margin-bottom:35px}
+            .form-grid{grid-template-columns:1fr;gap:15px}
+            .form-group.full{grid-column:span 1;margin-bottom:18px}
+            .form-group label{font-size:14px;margin-bottom:10px}
+            .form-group input,.form-group select,.form-group textarea{padding:16px 20px;font-size:16px}
+            .form-group textarea{height:120px}
+            .file-upload{padding:30px 20px}
+            .file-upload i{font-size:36px;margin-bottom:12px}
+            .file-upload p{font-size:14px;margin-bottom:6px}
+            .file-upload span{font-size:12px}
+            .benefits{padding:60px 0}
+            .benefits-grid{grid-template-columns:1fr 1fr;gap:20px}
+            .benefit-card{padding:30px 20px}
+            .benefit-card i{font-size:36px;margin-bottom:15px}
+            .benefit-card h4{font-size:18px;margin-bottom:10px}
+            .benefit-card p{font-size:13px}
+            .footer{padding:40px 0 20px}
+            .btn{min-height:44px;padding:14px 28px;font-size:15px}
         }
         @media(max-width:480px){
             .benefits-grid{grid-template-columns:1fr}
             .jobs-grid{grid-template-columns:1fr}
+            .hero h1{font-size:28px}
+            .form-section{padding:30px 20px}
+            .form-section h2{font-size:24px}
         }
+        
+        /* Touch Optimizations */
+        @media(max-width:768px){
+            *{-webkit-tap-highlight-color:rgba(220,38,38,0.2)}
+            .btn,.job-card,.benefit-card{min-height:44px;-webkit-tap-highlight-color:rgba(220,38,38,0.1)}
+            .form-group input,.form-group textarea,.form-group select{font-size:16px;-webkit-appearance:none}
+        }
+        
+        /* Prevent horizontal scroll */
+        html,body{overflow-x:hidden;width:100%;position:relative}
+        *{max-width:100%}
     </style>
 </head>
 <body class="loading">
