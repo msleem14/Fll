@@ -11,6 +11,25 @@
         :root{--red:#dc2626;--red-dark:#991b1b;--red-light:#ef4444;--dark:#0a0a0a;--darker:#050505}
         body{font-family:'Cairo','Poppins',sans-serif;background:var(--dark);color:#fff;line-height:1.7;overflow-x:hidden;min-height:100vh}
         body.en{direction:ltr;font-family:'Poppins','Cairo',sans-serif}
+        body.loading{overflow:hidden}
+        
+        /* Page Loader */
+        .page-loader{position:fixed;inset:0;background:#050505;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s,visibility 0.8s}
+        .page-loader.hidden{opacity:0;visibility:hidden}
+        .loader-logo{width:120px;height:65px;margin-bottom:30px;animation:loaderPulse 1.5s ease-in-out infinite}
+        @keyframes loaderPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:0.8}}
+        .loader-bar{width:150px;height:3px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden}
+        .loader-progress{height:100%;background:linear-gradient(90deg,var(--red),var(--red-light));border-radius:3px;animation:loaderFill 1.5s ease-out forwards}
+        @keyframes loaderFill{0%{width:0}100%{width:100%}}
+        
+        /* Custom Cursor */
+        .cursor{position:fixed;width:20px;height:20px;border:2px solid var(--red);border-radius:50%;pointer-events:none;z-index:9998;transition:transform 0.15s,width 0.3s,height 0.3s;transform:translate(-50%,-50%)}
+        .cursor-dot{position:fixed;width:6px;height:6px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+        .cursor.hover{width:50px;height:50px;background:rgba(220,38,38,0.1)}
+        @media(max-width:1024px){.cursor,.cursor-dot{display:none}}
+        
+        /* Scroll Progress */
+        .scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--red),var(--red-light));z-index:1001}
         a{text-decoration:none;color:inherit}
         .container{max-width:1200px;margin:0 auto;padding:0 24px}
 
@@ -102,7 +121,26 @@
         }
     </style>
 </head>
-<body>
+<body class="loading">
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <svg class="loader-logo" viewBox="0 0 180 80">
+            <defs><linearGradient id="loaderGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#dc2626"/><stop offset="100%" style="stop-color:#991b1b"/></linearGradient></defs>
+            <path d="M10 8 L10 72 L28 72 L28 48 L55 48 L55 32 L28 32 L28 24 L60 24 L60 8 Z" fill="#fff"/>
+            <path d="M65 8 L65 72 L110 72 L110 56 L83 56 L83 8 Z" fill="#fff"/>
+            <path d="M115 8 L115 72 L160 72 L160 56 L133 56 L133 8 Z" fill="#fff"/>
+            <path d="M5 58 Q15 70, 40 68 Q70 65, 100 55 Q130 45, 155 30 L150 38 L168 22 L148 18 L153 27 Q125 42, 95 52 Q65 62, 35 63 Q15 64, 8 52 Z" fill="url(#loaderGrad)"/>
+        </svg>
+        <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">
@@ -252,6 +290,62 @@
 
     <script>
         let lang='ar';
+        
+        // Page Loader
+        window.addEventListener('load',()=>{
+            setTimeout(()=>{
+                document.getElementById('pageLoader').classList.add('hidden');
+                document.body.classList.remove('loading');
+            },1800);
+        });
+
+        // Custom Cursor
+        const cursor=document.getElementById('cursor');
+        const cursorDot=document.getElementById('cursorDot');
+        let mouseX=0,mouseY=0,cursorX=0,cursorY=0;
+        
+        document.addEventListener('mousemove',e=>{
+            mouseX=e.clientX;
+            mouseY=e.clientY;
+            cursorDot.style.left=mouseX+'px';
+            cursorDot.style.top=mouseY+'px';
+        });
+        
+        const animateCursor=()=>{
+            cursorX+=(mouseX-cursorX)*0.15;
+            cursorY+=(mouseY-cursorY)*0.15;
+            cursor.style.left=cursorX+'px';
+            cursor.style.top=cursorY+'px';
+            requestAnimationFrame(animateCursor);
+        };
+        animateCursor();
+        
+        document.querySelectorAll('a,button,.btn,.job-card,.benefit-card').forEach(el=>{
+            el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
+            el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
+        });
+
+        // Scroll Progress
+        window.addEventListener('scroll',()=>{
+            const scrolled=(scrollY/(document.body.scrollHeight-innerHeight))*100;
+            document.getElementById('scrollProgress').style.width=scrolled+'%';
+        });
+
+        // 3D Tilt Effect
+        document.querySelectorAll('.job-card,.benefit-card').forEach(card=>{
+            card.addEventListener('mousemove',e=>{
+                const rect=card.getBoundingClientRect();
+                const x=e.clientX-rect.left;
+                const y=e.clientY-rect.top;
+                const rotateX=(y-rect.height/2)/20;
+                const rotateY=(rect.width/2-x)/20;
+                card.style.transform=`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+            card.addEventListener('mouseleave',()=>{
+                card.style.transform='perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
         function toggleLang(){
             lang=lang==='ar'?'en':'ar';
             document.body.classList.toggle('en',lang==='en');
