@@ -1059,7 +1059,7 @@
         },{threshold:0.5});
         counters.forEach(c=>counterObserver.observe(c));
         
-        // Form submit - Contact Form (Using form action for reliability)
+        // Form submit - Contact Form (Using same method as job application)
         document.getElementById('contactForm').addEventListener('submit',e=>{
             const btn=e.target.querySelector('button');
             const originalHTML=btn.innerHTML;
