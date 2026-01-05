@@ -17,6 +17,30 @@
         html{scroll-behavior:smooth}
         body{font-family:'Cairo','Poppins',sans-serif;background:var(--darker);color:#fff;line-height:1.8;overflow-x:hidden}
         body.en{direction:ltr;font-family:'Poppins','Cairo',sans-serif}
+        body.loading{overflow:hidden}
+
+        /* Page Loader */
+        .page-loader{position:fixed;inset:0;background:#050505;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s,visibility 0.8s}
+        .page-loader.hidden{opacity:0;visibility:hidden}
+        .loader-logo{width:150px;height:80px;margin-bottom:40px;animation:loaderPulse 1.5s ease-in-out infinite}
+        @keyframes loaderPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:0.8}}
+        .loader-bar{width:200px;height:4px;background:rgba(255,255,255,0.1);border-radius:4px;overflow:hidden}
+        .loader-progress{height:100%;background:linear-gradient(90deg,var(--red),var(--red-light));border-radius:4px;animation:loaderFill 2s ease-out forwards}
+        @keyframes loaderFill{0%{width:0}100%{width:100%}}
+        .loader-text{margin-top:20px;font-size:14px;color:rgba(255,255,255,0.5);letter-spacing:3px;text-transform:uppercase}
+
+        /* Custom Cursor */
+        .cursor{position:fixed;width:20px;height:20px;border:2px solid var(--red);border-radius:50%;pointer-events:none;z-index:9998;transition:transform 0.15s,width 0.3s,height 0.3s,border-color 0.3s;transform:translate(-50%,-50%)}
+        .cursor-dot{position:fixed;width:6px;height:6px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+        .cursor.hover{width:50px;height:50px;border-color:var(--red-light);background:rgba(220,38,38,0.1)}
+        @media(max-width:1024px){.cursor,.cursor-dot{display:none}}
+
+        /* Scroll Progress */
+        .scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--red),var(--red-light),var(--red));z-index:1001;transition:width 0.1s}
+
+        /* 3D Tilt Effect */
+        .tilt-card{transform-style:preserve-3d;transition:transform 0.5s}
+        .tilt-card .tilt-inner{transform:translateZ(30px)}
         a{text-decoration:none;color:inherit}
         .container{max-width:1300px;margin:0 auto;padding:0 24px}
 
@@ -30,6 +54,34 @@
         @keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
         @keyframes gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
         @keyframes glow{0%,100%{box-shadow:0 0 30px rgba(220,38,38,0.3)}50%{box-shadow:0 0 60px rgba(220,38,38,0.6)}}
+        @keyframes textReveal{0%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
+        @keyframes morphBlob{0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%}}
+        @keyframes neonPulse{0%,100%{text-shadow:0 0 10px var(--red),0 0 20px var(--red),0 0 40px var(--red)}50%{text-shadow:0 0 20px var(--red),0 0 40px var(--red),0 0 80px var(--red)}}
+        @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+        @keyframes borderDance{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+        /* Magnetic Button */
+        .btn-magnetic{position:relative;transition:transform 0.3s cubic-bezier(0.4,0,0.2,1)}
+        
+        /* Shimmer Effect */
+        .shimmer{background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.1) 50%,transparent 100%);background-size:200% 100%;animation:shimmer 2s infinite}
+        
+        /* Neon Text */
+        .neon-text{animation:neonPulse 2s ease-in-out infinite}
+        
+        /* Morphing Background */
+        .morph-bg{animation:morphBlob 8s ease-in-out infinite}
+        
+        /* Animated Border */
+        .animated-border{position:relative}
+        .animated-border::before{content:'';position:absolute;inset:-2px;background:linear-gradient(90deg,var(--red),var(--red-light),var(--red));background-size:200% 100%;animation:borderDance 3s linear infinite;border-radius:inherit;z-index:-1}
+        .animated-border::after{content:'';position:absolute;inset:0;background:var(--darker);border-radius:inherit;z-index:-1}
+        
+        /* Typing Effect */
+        .typing{overflow:hidden;border-left:3px solid var(--red);white-space:nowrap;animation:typing 3s steps(40) 1s forwards,blink 0.7s step-end infinite}
+        body.en .typing{border-left:none;border-right:3px solid var(--red)}
+        @keyframes typing{from{width:0}to{width:100%}}
+        @keyframes blink{50%{border-color:transparent}}
 
         .reveal{opacity:0;transform:translateY(50px);transition:all 0.8s cubic-bezier(0.4,0,0.2,1)}
         .reveal.active{opacity:1;transform:translateY(0)}
@@ -72,6 +124,11 @@
         .hero-particles{position:absolute;inset:0;overflow:hidden}
         .particle{position:absolute;width:4px;height:4px;background:var(--red);border-radius:50%;opacity:0.3;animation:float 6s ease-in-out infinite}
         .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at center,black 20%,transparent 70%)}
+        .hero-particles .particle{position:absolute;border-radius:50%;pointer-events:none}
+        .hero-shapes .shape{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.5;animation:morphBlob 15s ease-in-out infinite}
+        .shape-1{width:500px;height:500px;background:linear-gradient(135deg,rgba(220,38,38,0.3),transparent);top:-10%;right:-5%;animation-delay:0s}
+        .shape-2{width:400px;height:400px;background:linear-gradient(135deg,rgba(220,38,38,0.2),transparent);bottom:10%;left:-10%;animation-delay:-5s}
+        .shape-3{width:300px;height:300px;background:linear-gradient(135deg,rgba(100,50,150,0.2),transparent);top:40%;left:30%;animation-delay:-10s}
         .hero .container{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
         .hero-content{animation:slideRight 1s ease-out}
         .hero-badge{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.2);border-radius:50px;margin-bottom:30px;backdrop-filter:blur(10px)}
@@ -293,7 +350,26 @@
         }
     </style>
 </head>
-<body>
+<body class="loading">
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <svg class="loader-logo" viewBox="0 0 180 80">
+            <defs><linearGradient id="loaderGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#dc2626"/><stop offset="100%" style="stop-color:#991b1b"/></linearGradient></defs>
+            <path d="M10 8 L10 72 L28 72 L28 48 L55 48 L55 32 L28 32 L28 24 L60 24 L60 8 Z" fill="#fff"/>
+            <path d="M65 8 L65 72 L110 72 L110 56 L83 56 L83 8 Z" fill="#fff"/>
+            <path d="M115 8 L115 72 L160 72 L160 56 L133 56 L133 8 Z" fill="#fff"/>
+            <path d="M5 58 Q15 70, 40 68 Q70 65, 100 55 Q130 45, 155 30 L150 38 L168 22 L148 18 L153 27 Q125 42, 95 52 Q65 62, 35 63 Q15 64, 8 52 Z" fill="url(#loaderGrad)"/>
+        </svg>
+        <div class="loader-bar"><div class="loader-progress"></div></div>
+        <div class="loader-text">Loading...</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="container">
@@ -338,12 +414,11 @@
         <div class="hero-glow hero-glow-1"></div>
         <div class="hero-glow hero-glow-2"></div>
         <div class="hero-grid"></div>
-        <div class="hero-particles">
-            <div class="particle" style="top:20%;left:10%"></div>
-            <div class="particle" style="top:40%;left:25%;animation-delay:-2s"></div>
-            <div class="particle" style="top:60%;left:15%;animation-delay:-4s"></div>
-            <div class="particle" style="top:30%;right:20%"></div>
-            <div class="particle" style="top:70%;right:30%;animation-delay:-3s"></div>
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
         </div>
         <div class="container">
             <div class="hero-content">
@@ -627,6 +702,103 @@
     <script>
         let lang='ar';
         
+        // Page Loader
+        window.addEventListener('load',()=>{
+            setTimeout(()=>{
+                document.getElementById('pageLoader').classList.add('hidden');
+                document.body.classList.remove('loading');
+            },2500);
+        });
+
+        // Custom Cursor
+        const cursor=document.getElementById('cursor');
+        const cursorDot=document.getElementById('cursorDot');
+        let mouseX=0,mouseY=0,cursorX=0,cursorY=0;
+        
+        document.addEventListener('mousemove',e=>{
+            mouseX=e.clientX;
+            mouseY=e.clientY;
+            cursorDot.style.left=mouseX+'px';
+            cursorDot.style.top=mouseY+'px';
+        });
+        
+        const animateCursor=()=>{
+            cursorX+=(mouseX-cursorX)*0.15;
+            cursorY+=(mouseY-cursorY)*0.15;
+            cursor.style.left=cursorX+'px';
+            cursor.style.top=cursorY+'px';
+            requestAnimationFrame(animateCursor);
+        };
+        animateCursor();
+        
+        document.querySelectorAll('a,button,.btn,.service-card,.partner-card,.contact-card').forEach(el=>{
+            el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
+            el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
+        });
+
+        // Scroll Progress
+        window.addEventListener('scroll',()=>{
+            const scrolled=(scrollY/(document.body.scrollHeight-innerHeight))*100;
+            document.getElementById('scrollProgress').style.width=scrolled+'%';
+        });
+
+        // Particles
+        const particlesContainer=document.getElementById('particles');
+        for(let i=0;i<50;i++){
+            const p=document.createElement('div');
+            p.className='particle';
+            p.style.cssText=`
+                left:${Math.random()*100}%;
+                top:${Math.random()*100}%;
+                width:${Math.random()*4+2}px;
+                height:${Math.random()*4+2}px;
+                background:${Math.random()>0.5?'var(--red)':'rgba(255,255,255,0.3)'};
+                animation:float ${Math.random()*5+5}s ease-in-out infinite;
+                animation-delay:${Math.random()*5}s;
+                opacity:${Math.random()*0.5+0.2};
+            `;
+            particlesContainer.appendChild(p);
+        }
+
+        // Parallax Mouse Effect
+        document.addEventListener('mousemove',e=>{
+            const moveX=(e.clientX-innerWidth/2)/50;
+            const moveY=(e.clientY-innerHeight/2)/50;
+            document.querySelectorAll('.hero-glow,.shape').forEach((el,i)=>{
+                el.style.transform=`translate(${moveX*(i+1)}px,${moveY*(i+1)}px)`;
+            });
+        });
+
+        // 3D Tilt Effect
+        document.querySelectorAll('.service-card,.partner-card,.hero-card').forEach(card=>{
+            card.addEventListener('mousemove',e=>{
+                const rect=card.getBoundingClientRect();
+                const x=e.clientX-rect.left;
+                const y=e.clientY-rect.top;
+                const centerX=rect.width/2;
+                const centerY=rect.height/2;
+                const rotateX=(y-centerY)/15;
+                const rotateY=(centerX-x)/15;
+                card.style.transform=`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px)`;
+            });
+            card.addEventListener('mouseleave',()=>{
+                card.style.transform='perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // Magnetic Buttons
+        document.querySelectorAll('.btn-primary').forEach(btn=>{
+            btn.addEventListener('mousemove',e=>{
+                const rect=btn.getBoundingClientRect();
+                const x=e.clientX-rect.left-rect.width/2;
+                const y=e.clientY-rect.top-rect.height/2;
+                btn.style.transform=`translate(${x*0.3}px,${y*0.3}px)`;
+            });
+            btn.addEventListener('mouseleave',()=>{
+                btn.style.transform='translate(0,0)';
+            });
+        });
+
         function toggleLang(){
             lang=lang==='ar'?'en':'ar';
             document.body.classList.toggle('en',lang==='en');
@@ -666,7 +838,7 @@
             });
         };
         window.addEventListener('scroll',revealOnScroll);
-        revealOnScroll();
+        setTimeout(revealOnScroll,2600);
         
         // Counter animation
         const counters=document.querySelectorAll('[data-count]');
@@ -678,7 +850,7 @@
             const timer=setInterval(()=>{
                 current+=step;
                 if(current>=target){
-                    el.textContent='+'+target+(el.closest('.hero-stat')&&target===99?'%':'');
+                    el.textContent='+'+target+(target===99?'%':'');
                     clearInterval(timer);
                 }else{
                     el.textContent='+'+Math.floor(current);
@@ -698,9 +870,35 @@
         // Form submit
         document.getElementById('contactForm').addEventListener('submit',e=>{
             e.preventDefault();
-            alert(lang==='ar'?'تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.':'Message sent successfully! We will contact you soon.');
-            e.target.reset();
+            const btn=e.target.querySelector('button');
+            btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+            setTimeout(()=>{
+                btn.innerHTML='<i class="fas fa-check"></i> تم الإرسال!';
+                btn.style.background='linear-gradient(135deg,#22c55e,#16a34a)';
+                setTimeout(()=>{
+                    alert(lang==='ar'?'تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.':'Message sent successfully! We will contact you soon.');
+                    e.target.reset();
+                    btn.innerHTML='<i class="fas fa-paper-plane"></i><span>إرسال الرسالة</span>';
+                    btn.style.background='';
+                },1000);
+            },1500);
+        });
+
+        // Ripple Effect on Buttons
+        document.querySelectorAll('.btn').forEach(btn=>{
+            btn.addEventListener('click',function(e){
+                const ripple=document.createElement('span');
+                ripple.style.cssText=`position:absolute;background:rgba(255,255,255,0.3);border-radius:50%;transform:scale(0);animation:ripple 0.6s linear;pointer-events:none;`;
+                const rect=this.getBoundingClientRect();
+                const size=Math.max(rect.width,rect.height);
+                ripple.style.width=ripple.style.height=size+'px';
+                ripple.style.left=(e.clientX-rect.left-size/2)+'px';
+                ripple.style.top=(e.clientY-rect.top-size/2)+'px';
+                this.appendChild(ripple);
+                setTimeout(()=>ripple.remove(),600);
+            });
         });
     </script>
+    <style>@keyframes ripple{to{transform:scale(4);opacity:0}}</style>
 </body>
 </html>
